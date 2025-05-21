@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App de Autos</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./Style.css"/>
+
+  <!-- Manifest y meta datos -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#e00000">
+  <link rel="apple-touch-icon" href="./icons/logo.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <!-- Fuentes o iconos adicionales (ejemplo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap " rel="stylesheet">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const registration = await navigator.serviceWorker.register('./sw.js');
+          console.log('SW registrado:', registration.scope);
+        } catch (error) {
+          console.error('Error al registrar SW:', error);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <h1>Bienvenido a la App de Autos</h1>
+    <p>Explora nuestra selección de autos.</p>
+
+    <div id="lista-de-autos">Cargando lista de autos...</div>
+
+    <!-- Contenedores dinámicos -->
+    <div id="usuario-content" style="display:none;"></div>
+    <div id="aleatorio-content" style="display:none;"></div>
+    <div id="favoritos-content" style="display:none;"></div>
+    <div id="api-content" style="display:none;"></div>
+    <div id="detalle-content" style="display:none;"></div>
+  </main>
+
+  <!-- Navegación lateral -->
+  <aside class="c-nav">
+    <button class="c-nav-item" onclick="mostrarSeccion('home')">🏠 Home</button>
+    <button class="c-nav-item" onclick="mostrarSeccion('usuario')">👤 Usuario</button>
+    <button class="c-nav-item" onclick="mostrarSeccion('aleatorio')">🎲 Aleatorio</button>
+    <button class="c-nav-item" onclick="mostrarSeccion('favoritos')">⭐ Favoritos</button>
+    <button class="c-nav-item" onclick="mostrarSeccion('api')">📥 Datos API</button>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="./js/api.js"></script>
+  <script src="/js/lista.js"></script>
+  <script src="/js/Usuario.js"></script>
+  <script src="/js/aleatorios.js"></script>
+  <script src="/js/Favoritos.js"></script>
+  <script src="/js/detalle.js"></script>
+  <script src="/js/general.js"></script>
+
+</body>
+</html>
+
+
